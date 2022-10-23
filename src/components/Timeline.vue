@@ -83,6 +83,8 @@ export default defineComponent({
 
 <style lang="scss">
 .timeline {
+  height: var(--intro-padding);
+
   h1 {
     word-spacing: 100vw;
   }

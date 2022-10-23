@@ -41,7 +41,7 @@ export default defineComponent({
     position: absolute;
     z-index: -1;
     top: 0;
-    height: 150px;
+    height: var(--intro-padding);
     left: 50%;
     transform: translate(-50%);
   }

@@ -1,5 +1,8 @@
 <template>
-  <div class="character-node">
+  <div class="character-node" v-intersection-observer="[onIntersectionObserver, {
+  rootMargin: '-50% 0% -50% 0%', 
+  threshold: 0
+  }]">
     <div class="character-node-padding"></div>
     <div class="character-node-text">
       <div class="character-node-text-content">
@@ -15,6 +18,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { CharacterNodeType } from '../../../models/timelineCharacter.type';
+import { useCharacterStore } from '../../../stores/character.store';
 
 export default defineComponent({
   name: 'CharacterNode',
@@ -24,6 +28,19 @@ export default defineComponent({
     nodeData: {
       type: Object as PropType<CharacterNodeType>,
       required: true,
+    }
+  },
+  setup() {
+    const characterStore = useCharacterStore()
+
+    return { characterStore }
+  },
+  methods: {
+    onIntersectionObserver([{ isIntersecting }]: any) {
+      if (isIntersecting && this.nodeData.status !== 'leaving') {
+        console.log(this.nodeData.name, 'is on screen')
+        this.characterStore.setCharacter(this.nodeData)
+      }
     }
   },
   data() {

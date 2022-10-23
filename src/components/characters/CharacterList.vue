@@ -1,9 +1,7 @@
 <template>
   <div class="character-list">
-    <Character />
-    <Character />
-    <Character />
-    <Character />
+    <Character v-for="char of characterStore.characters" :key="char.name" :char="char" />
+
   </div>
 </template>
 
@@ -33,5 +31,7 @@ export default defineComponent({
   position: fixed;
   top: 50%;
   right: 0;
+  transform: translate(-50%, -50%);
+
 }
 </style>
