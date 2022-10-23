@@ -2,9 +2,12 @@
   <div class="character-node">
     <div class="character-node-padding"></div>
     <div class="character-node-text">
-      <h3>{{nodeData.name}}</h3>
-      <p v-if="nodeData.status === 'leaving'">Farewell</p>
-      <p v-else>Welcome</p>
+      <div class="character-node-text-content">
+
+        <h3>{{nodeData.name}}</h3>
+        <p v-if="nodeData.status === 'leaving'">Farewell</p>
+        <p v-else>Welcome</p>
+      </div>
     </div>
   </div>
 </template>
@@ -37,18 +40,28 @@ export default defineComponent({
   margin: auto;
   display: flex;
 
+  &:after {
+    @include border-line;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
   &-text,
   &-padding {
     width: 50%;
   }
 
-  &-padding {
-    padding-right: 20px;
-  }
-
   &-text {
-    @include border-line;
     position: relative;
+
+    &-content {
+      padding-left: var(--timeline-spacing);
+    }
 
     &::before {
       @include timeline-dot;

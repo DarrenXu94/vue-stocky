@@ -48,6 +48,7 @@ export default defineComponent({
 .timeline-node {
   // display: flex;
   // justify-content: center;
+  position: relative;
 
   img {
     max-width: 700px;

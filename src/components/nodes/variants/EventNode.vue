@@ -2,13 +2,17 @@
   <div class="event-node">
 
     <div class="event-node-img-container">
-      <div v-for="pic of nodeData.pics" :key="pic">
-        <img :src="'/events/' + pic" :alt="nodeData.title">
+      <div class="event-node-img-container-content">
+        <div v-for="pic of nodeData.pics" :key="pic">
+          <img :src="'/events/' + pic" :alt="nodeData.title">
+        </div>
       </div>
     </div>
 
     <div class="event-node-text">
-      <h3>{{nodeData.title}}</h3>
+      <div class="event-node-text-content">
+        <h3>{{nodeData.title}}</h3>
+      </div>
     </div>
   </div>
 </template>
@@ -41,25 +45,43 @@ export default defineComponent({
   margin: auto;
   display: flex;
 
+  &:after {
+    @include border-line;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
   &-text,
   &-img-container {
     width: 50%;
   }
 
   &-text {
-    @include border-line;
     position: relative;
+
+    &-content {
+      padding-left: var(--timeline-spacing);
+
+    }
 
     &::before {
       @include timeline-dot;
+
     }
   }
 
   &-img-container {
-    padding-right: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    &-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      padding-right: var(--timeline-spacing);
+    }
   }
 }
 </style>

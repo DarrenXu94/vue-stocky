@@ -9,6 +9,8 @@
 
   font-family: var(--tertiary-font) !important;
 
+  --timeline-spacing: 50px;
+
 }
 
 p {
