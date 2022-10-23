@@ -1,5 +1,9 @@
 <template>
+  <div class="timeline">
+    <h1>24 Stocky Timeline</h1>
+  </div>
   <div>
+    <Intro />
     <Node :node-data="node" v-for="(node, idx) of sortedList" :key="idx" />
   </div>
 </template>
@@ -8,22 +12,26 @@
 import { defineComponent } from 'vue';
 import { events } from '../consts/events'
 import { characters } from '../consts/characters'
+import { years } from '../consts/years'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
-import { CharacterNode, TimelineCharacter } from '../models/timelineCharacter.type';
+import { CharacterNodeType, TimelineCharacter } from '../models/timelineCharacter.type';
 import { TimelineEvent } from '../models/timelineEvent.type';
 import Node from './nodes/Node.vue';
+import { NodeTimelineYearType } from '../models/timelineYear.type';
+import Intro from './Intro.vue';
 
 dayjs.extend(customParseFormat)
 
 export default defineComponent({
   name: 'Timeline',
   components: {
-    Node
+    Node,
+    Intro
   },
   beforeMount() {
 
-    const fullCharEvents = characters.reduce((acc: CharacterNode[], character: TimelineCharacter) => {
+    const fullCharEvents = characters.reduce((acc: CharacterNodeType[], character: TimelineCharacter) => {
 
       const toReturn = [...acc]
 
@@ -31,7 +39,7 @@ export default defineComponent({
       characterStart.date = character.arrival;
       toReturn.push(characterStart)
 
-      const characterEnd = { ...character } as CharacterNode;
+      const characterEnd = { ...character } as CharacterNodeType;
       if (character.departure) {
         characterEnd.date = character.departure;
         characterEnd.status = "leaving";
@@ -41,10 +49,16 @@ export default defineComponent({
       return toReturn;
     }, [])
 
+    const timelineYears: NodeTimelineYearType[] = years.map(year => ({
+      ...year,
+      date: `01/01/${year.year}`
+    }))
+
 
     const fullEventList = [
       ...events,
-      ...fullCharEvents
+      ...fullCharEvents,
+      ...timelineYears
     ];
     // console.log(fullEventList)
     const sortedList = fullEventList.sort(function (a, b) {
@@ -58,8 +72,16 @@ export default defineComponent({
   },
   data() {
     return {
-      sortedList: [] as (CharacterNode | TimelineEvent)[]
+      sortedList: [] as (CharacterNodeType | TimelineEvent | NodeTimelineYearType)[]
     };
   },
 });
 </script>
+
+<style lang="scss">
+.timeline {
+  h1 {
+    word-spacing: 100vw;
+  }
+}
+</style>

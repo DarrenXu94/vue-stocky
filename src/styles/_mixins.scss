@@ -1,0 +1,19 @@
+@mixin border-line {
+  border-left: 2px solid var(--primary-color);
+  padding-left: 40px;
+
+}
+
+@mixin timeline-dot {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background: white;
+  border: 2px solid var(--primary-color);
+  box-shadow: 3px 3px 0px var(--secondary-color);
+  box-shadow: 3px 3px 0px var(--secondary-color);
+  border-radius: 50%;
+  position: absolute;
+  left: -20px;
+  top: 20px;
+}

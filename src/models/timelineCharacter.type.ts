@@ -3,9 +3,9 @@ export interface TimelineCharacter {
   arrival: string;
   departure?: string;
   img: string;
+  room: number;
 }
-
-export interface CharacterNode extends TimelineCharacter {
+export interface CharacterNodeType extends TimelineCharacter {
   date: string;
   status?: string;
 }
