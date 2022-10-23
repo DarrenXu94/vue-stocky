@@ -6,6 +6,7 @@
     <Intro />
     <Node :node-data="node" v-for="(node, idx) of sortedList" :key="idx" />
   </div>
+  <CharacterList />
 </template>
 
 <script lang="ts">
@@ -20,6 +21,7 @@ import { TimelineEvent } from '../models/timelineEvent.type';
 import Node from './nodes/Node.vue';
 import { NodeTimelineYearType } from '../models/timelineYear.type';
 import Intro from './Intro.vue';
+import CharacterList from './characters/CharacterList.vue';
 
 dayjs.extend(customParseFormat)
 
@@ -27,7 +29,8 @@ export default defineComponent({
   name: 'Timeline',
   components: {
     Node,
-    Intro
+    Intro,
+    CharacterList
   },
   beforeMount() {
 
