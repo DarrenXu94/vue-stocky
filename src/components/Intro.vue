@@ -31,9 +31,18 @@ export default defineComponent({
 @import '../styles/mixins';
 
 .intro {
+  @include for-phone-only {
+    text-align: left;
+    @include mobile-timeline-margin;
+  }
+
   text-align: center;
   width: 400px;
   margin: auto;
+
+  @include for-phone-only {
+    width: auto;
+  }
 
   :before {
     @include border-line;
@@ -42,7 +51,6 @@ export default defineComponent({
     z-index: -1;
     top: 0;
     height: var(--intro-padding);
-    left: 50%;
     transform: translate(-50%);
   }
 

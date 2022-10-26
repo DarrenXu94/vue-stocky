@@ -45,15 +45,23 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@import '../../styles/mixins';
+
 .timeline-node {
-  // display: flex;
-  // justify-content: center;
   position: relative;
 
   img {
     max-width: 700px;
     height: 300px;
     margin: 8px;
+
+    @include for-phone-only {
+      height: 96px;
+
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+    }
+
     border-radius: 15px;
   }
 }

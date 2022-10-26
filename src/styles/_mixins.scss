@@ -1,9 +1,39 @@
-@mixin border-line {
-  border-left: 2px solid var(--primary-color);
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
 
+
+@mixin border-line {
+  border-left: 3px solid var(--primary-color);
+  left: 15%;
+
+  @include for-tablet-portrait-up {
+    left: 50%;
+  }
+}
+
+@mixin mobile-timeline-margin {
+  margin-left: 20px;
+  margin-right: 20px;
+  width: auto;
 }
 
 @mixin timeline-dot {
+  @include for-phone-only {
+    display: none;
+  }
   content: "";
   width: 30px;
   height: 30px;

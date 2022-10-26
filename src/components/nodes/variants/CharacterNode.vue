@@ -1,13 +1,13 @@
 <template>
   <div class="character-node" v-intersection-observer="[onIntersectionObserver, {
-  rootMargin: '-50% 0% -50% 0%', 
-  threshold: 0
+    rootMargin: '-50% 0% -50% 0%',
+    threshold: 0
   }]">
     <div class="character-node-padding"></div>
     <div class="character-node-text">
       <div class="character-node-text-content">
 
-        <h3>{{nodeData.name}}</h3>
+        <h3>{{ nodeData.name }}</h3>
         <p v-if="nodeData.status === 'leaving'">Farewell</p>
         <p v-else>Welcome</p>
       </div>
@@ -64,7 +64,6 @@ export default defineComponent({
     z-index: -1;
     top: 0;
     height: 100%;
-    left: 50%;
     transform: translate(-50%);
   }
 

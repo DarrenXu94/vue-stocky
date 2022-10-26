@@ -1,7 +1,7 @@
 <template>
   <div class="year-node">
     <h2>
-      {{nodeData.year}}
+      {{ nodeData.year }}
     </h2>
   </div>
 </template>
@@ -27,7 +27,14 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
+@import '../../../styles/mixins';
+
 .year-node {
+  @include for-phone-only {
+    text-align: left;
+    @include mobile-timeline-margin;
+  }
+
   text-align: center;
 
   h2 {

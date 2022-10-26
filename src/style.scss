@@ -1,3 +1,4 @@
+@import './styles//mixins';
 :root {
   --base-font: 'Merriweather', serif;
   --secondary-font: 'Libre Franklin', sans-serif;
@@ -12,6 +13,9 @@
   --timeline-spacing: 50px;
 
   --intro-padding: 30vh;
+  @include for-phone-only {
+    --intro-padding: 20vh;
+  }
 
 }
 
@@ -21,4 +25,9 @@ p {
 
 h1 {
   font-family: var(--base-font) !important;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
 }

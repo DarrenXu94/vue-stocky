@@ -82,10 +82,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@import '../styles/mixins';
+
 .timeline {
+
   height: var(--intro-padding);
 
   h1 {
+    @include for-phone-only {
+      display: none;
+    }
+
     word-spacing: 100vw;
   }
 }

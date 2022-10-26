@@ -3,7 +3,7 @@ import { createPinia } from "pinia";
 
 import { vIntersectionObserver } from "@vueuse/components";
 
-import "./style.css";
+import "./style.scss";
 import App from "./App.vue";
 const pinia = createPinia();
 
