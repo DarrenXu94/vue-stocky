@@ -1,9 +1,15 @@
 <template>
   <div class="character-list">
-    <div v-for="(char, idx) in characterStore.characters" :key="idx">
+    <!-- <div v-for="(char, idx) in characterStore.characters" :key="idx">
       <Character v-if="char" :char="char" />
 
+    </div> -->
+    <!-- <div v-for="char of characters" :key="char.name"> -->
+    <div class="character-container">
+
+      <Character v-for="char of characters" :key="char.name" :char="char" />
     </div>
+    <!-- </div> -->
 
   </div>
 </template>
@@ -12,6 +18,7 @@
 import { defineComponent } from 'vue';
 import { useCharacterStore } from '../../stores/character.store';
 import Character from './Character.vue';
+import { characters } from '../../consts/characters'
 
 export default defineComponent({
   name: 'CharacterList',
@@ -25,6 +32,7 @@ export default defineComponent({
   },
   data() {
     return {
+      characters
     };
   },
 });
@@ -35,6 +43,12 @@ export default defineComponent({
   top: 50%;
   right: 0;
   transform: translate(-50%, -50%);
+  height: calc(75px * 4);
+  width: 75px;
+
+  .character-container {
+    position: relative;
+  }
 
 }
 </style>

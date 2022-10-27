@@ -1,13 +1,13 @@
 <template>
-  <div class="character">
-    <div>{{char.name}}</div>
+  <div class="character" :id="charRenderDivId">
+    <div>{{ char.name }}</div>
     <img :src="char.img" :alt="char.name">
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { CharacterNodeType } from '../../models/timelineCharacter.type';
+import { CharacterNodeType, TimelineCharacter } from '../../models/timelineCharacter.type';
 
 export default defineComponent({
   name: 'Character',
@@ -15,18 +15,27 @@ export default defineComponent({
   },
   props: {
     char: {
-      type: Object as PropType<CharacterNodeType>,
+      type: Object as PropType<TimelineCharacter>,
       required: true,
+    }
+  },
+  computed: {
+    charRenderDivId(): string {
+      return this.char.name + '_render'
     }
   },
   data() {
     return {
+      offsetTop: this.char.room * 75 + 'px'
     };
   },
 });
 </script>
 <style lang="scss">
 .character {
+  position: absolute;
+  top: v-bind(offsetTop);
+
   display: flex;
   flex-direction: column;
   align-items: center;

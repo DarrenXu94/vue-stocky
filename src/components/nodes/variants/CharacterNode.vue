@@ -1,8 +1,9 @@
 <template>
-  <div class="character-node" v-intersection-observer="[onIntersectionObserver, {
+  <!-- <div class="character-node" v-intersection-observer="[onIntersectionObserver, {
     rootMargin: '-50% 0% -50% 0%',
     threshold: 0
-  }]">
+  }]"> -->
+  <div class="character-node" :id="computedId()">
     <div class="character-node-padding"></div>
     <div class="character-node-text">
       <div class="character-node-text-content">
@@ -19,10 +20,55 @@
 import { defineComponent, PropType } from 'vue';
 import { CharacterNodeType } from '../../../models/timelineCharacter.type';
 import { useCharacterStore } from '../../../stores/character.store';
+import { gsap } from 'gsap';
+
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+const isLocalHost =
+  location.hostname === "localhost" ||
+  location.hostname === "127.0.0.1" ||
+  location.hostname === "";
 
 export default defineComponent({
   name: 'CharacterNode',
-  components: {
+  mounted() {
+    if (this.nodeData.status == 'leaving') return
+
+    const arrivalDiv = '#' + this.nodeData.name
+    const departureDiv = '#' + this.nodeData.name + '_leaving'
+
+    let triggerOpts = {
+      trigger: arrivalDiv,
+      markers: isLocalHost,
+      start: "top center",
+      end: "top center",
+      // endTrigger: departureDiv,
+      toggleActions: "play reverse play reverse",
+    } as any;
+
+    if (this.nodeData.departure) {
+      triggerOpts.endTrigger = departureDiv;
+    } else {
+      triggerOpts.endTrigger = "body";
+      triggerOpts.end = "bottom bottom";
+    }
+
+    const projectShrinkTimeline = gsap.timeline({
+      scrollTrigger: triggerOpts,
+    });
+
+    const renderId = '#' + this.nodeData.name + '_render'
+    const shrinkTween = gsap.fromTo(
+      renderId,
+      { xPercent: 0, opacity: 0 },
+      {
+
+        opacity: 1,
+      }
+    );
+    projectShrinkTimeline.add(shrinkTween);
+
   },
   props: {
     nodeData: {
@@ -32,10 +78,12 @@ export default defineComponent({
   },
   setup() {
     const characterStore = useCharacterStore()
-
     return { characterStore }
   },
   methods: {
+    computedId(): string {
+      return `${this.nodeData.name}${this.nodeData.status == 'leaving' ? '_leaving' : ''}`
+    },
     onIntersectionObserver([{ isIntersecting }]: any) {
       if (isIntersecting && this.nodeData.status !== 'leaving') {
         console.log(this.nodeData.name, 'is on screen')
