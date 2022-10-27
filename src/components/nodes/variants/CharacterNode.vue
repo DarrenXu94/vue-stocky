@@ -41,6 +41,11 @@ export default defineComponent({
         console.log(this.nodeData.name, 'is on screen')
         this.characterStore.setCharacter(this.nodeData)
       }
+
+      if (isIntersecting && this.nodeData.status == 'leaving') {
+        this.characterStore.removeCharacter(this.nodeData)
+
+      }
     }
   },
   data() {

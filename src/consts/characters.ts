@@ -47,7 +47,7 @@ export const characters: TimelineCharacter[] = [
   {
     name: "Stymo",
     arrival: "01/01/2019",
-    departure: "28/09/2019",
+    departure: "27/08/2019",
     img: "stymo.png",
     room: 4,
   },

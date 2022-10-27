@@ -1,6 +1,9 @@
 <template>
   <div class="character-list">
-    <Character v-for="char of characterStore.characters" :key="char.name" :char="char" />
+    <div v-for="(char, idx) in characterStore.characters" :key="idx">
+      <Character v-if="char" :char="char" />
+
+    </div>
 
   </div>
 </template>
