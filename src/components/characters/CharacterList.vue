@@ -43,8 +43,8 @@ export default defineComponent({
   top: 50%;
   right: 0;
   transform: translate(-50%, -50%);
-  height: calc(75px * 4);
-  width: 75px;
+  height: calc(100px * 4);
+  width: 85px;
 
   .character-container {
     position: relative;

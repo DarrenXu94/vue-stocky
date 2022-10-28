@@ -7,6 +7,7 @@
         </div>
       </div>
     </div>
+    <div class="event-node-padding" v-if="!nodeData.pics"></div>
 
     <div class="event-node-text">
       <div class="event-node-text-content">
@@ -43,6 +44,30 @@ export default defineComponent({
   display: flex;
   align-items: center;
 
+  &-text {
+    padding-left: var(--timeline-spacing);
+
+  }
+
+  &-padding {
+    width: 20%;
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 30px;
+      height: 30px;
+      background: white;
+      border: 2px solid var(--primary-color);
+      box-shadow: 3px 3px 0px var(--secondary-color);
+      box-shadow: 3px 3px 0px var(--secondary-color);
+      border-radius: 50%;
+      position: absolute;
+      right: 5px;
+      top: -15px;
+    }
+  }
+
   &:after {
     @include border-line;
     content: "";
@@ -76,7 +101,8 @@ export default defineComponent({
     }
 
     &-text,
-    &-img-container {
+    &-img-container,
+    &-padding {
       width: 50%;
     }
 
@@ -85,12 +111,10 @@ export default defineComponent({
 
       &-content {
         padding-left: var(--timeline-spacing);
-
       }
 
       &::before {
         @include timeline-dot;
-
       }
     }
 

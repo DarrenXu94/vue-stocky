@@ -26,7 +26,7 @@ export default defineComponent({
   },
   data() {
     return {
-      offsetTop: this.char.room * 75 + 'px'
+      offsetTop: (this.char.room - 1) * 100 + 'px'
     };
   },
 });
