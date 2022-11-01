@@ -105,47 +105,50 @@ export default defineComponent({
 <style lang="scss">
 @import '../../../styles/mixins';
 
-.character-node {
-  display: flex;
-  align-items: center;
+@include for-phone-only {
 
-  &-text {
-    padding-left: var(--timeline-spacing);
+  .character-node {
+    display: flex;
+    align-items: center;
 
-  }
+    &-text {
+      padding-left: var(--timeline-spacing);
 
-  &-padding {
-    width: 20%;
-    position: relative;
-
-    &::after {
-      content: "";
-      width: 30px;
-      height: 30px;
-      background: white;
-      border: 2px solid var(--primary-color);
-      box-shadow: 3px 3px 0px var(--secondary-color);
-      box-shadow: 3px 3px 0px var(--secondary-color);
-      border-radius: 50%;
-      position: absolute;
-      right: 5px;
-      top: -15px;
     }
-  }
 
-  &:after {
-    @include border-line;
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    height: 100%;
-    transform: translate(-50%);
-  }
+    &-padding {
+      width: 20%;
+      position: relative;
 
-  &-img-container-img {
-    &:not(:first-child) {
-      display: none;
+      &::after {
+        content: "";
+        width: 30px;
+        height: 30px;
+        background: white;
+        border: 2px solid var(--primary-color);
+        box-shadow: 3px 3px 0px var(--secondary-color);
+        box-shadow: 3px 3px 0px var(--secondary-color);
+        border-radius: 50%;
+        position: absolute;
+        right: 5px;
+        top: -15px;
+      }
+    }
+
+    &:after {
+      @include border-line;
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      height: 100%;
+      transform: translate(-50%);
+    }
+
+    &-img-container-img {
+      &:not(:first-child) {
+        display: none;
+      }
     }
   }
 }
@@ -181,6 +184,8 @@ export default defineComponent({
 
       &::before {
         @include timeline-dot;
+        left: -20px;
+
       }
     }
   }

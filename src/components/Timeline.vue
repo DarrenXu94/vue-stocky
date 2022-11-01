@@ -93,6 +93,8 @@ export default defineComponent({
       display: none;
     }
 
+    padding: 50px;
+
     word-spacing: 100vw;
   }
 }

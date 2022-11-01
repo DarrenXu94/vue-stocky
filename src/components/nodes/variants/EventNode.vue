@@ -85,6 +85,9 @@ export default defineComponent({
   }
 
   @include for-tablet-portrait-up {
+    .event-node-padding {
+      display: none;
+    }
 
     width: 80%;
     margin: auto;
@@ -110,11 +113,13 @@ export default defineComponent({
       position: relative;
 
       &-content {
-        padding-left: var(--timeline-spacing);
+        padding-left: calc(var(--timeline-spacing)/2.5);
       }
 
       &::before {
         @include timeline-dot;
+        left: 5px;
+
       }
     }
 
