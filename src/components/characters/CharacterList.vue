@@ -40,11 +40,11 @@ export default defineComponent({
 <style lang="scss">
 .character-list {
   position: fixed;
-  top: 50%;
+  top: 30%;
   right: 0;
-  transform: translate(-50%, -50%);
+  transform: translate(0%, -50%);
   height: calc(100px * 4);
-  width: 85px;
+  width: 75px;
 
   .character-container {
     position: relative;

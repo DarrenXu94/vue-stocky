@@ -26,7 +26,7 @@ export default defineComponent({
   },
   data() {
     return {
-      offsetTop: (this.char.room - 1) * 100 + 'px'
+      offsetTop: (this.char.room - 1) * 70 + 'px'
     };
   },
 });
@@ -42,8 +42,8 @@ export default defineComponent({
   padding-bottom: 10px;
 
   img {
-    width: 75px;
-    height: 75px;
+    width: 40px;
+    height: 40px;
     object-fit: scale-down;
   }
 }
