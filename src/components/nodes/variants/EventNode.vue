@@ -9,7 +9,7 @@
     </div>
     <div class="event-node-padding" v-if="!nodeData.pics"></div>
 
-    <div class="event-node-text">
+    <div class="event-node-text" :class="{               noSpacing: nodeData.pics               }">
       <div class="event-node-text-content">
         <h3>{{ nodeData.title }}</h3>
       </div>
@@ -47,6 +47,9 @@ export default defineComponent({
   &-text {
     padding-left: var(--timeline-spacing);
 
+    &.noSpacing {
+      padding-left: 15px;
+    }
   }
 
   &-padding {

@@ -15,6 +15,7 @@
   --intro-padding: 30vh;
   @include for-phone-only {
     --intro-padding: 20vh;
+
   }
 
 }

@@ -54,6 +54,8 @@ export default defineComponent({
     max-width: 700px;
     height: 300px;
     margin: 8px;
+    border: 3px solid var(--primary-color);
+
 
     @include for-phone-only {
       height: 96px;

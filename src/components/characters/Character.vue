@@ -32,9 +32,16 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
+@import '../../styles/mixins';
+
 .character {
   position: absolute;
   top: v-bind(offsetTop);
+
+  @include for-tablet-portrait-up {
+    top: calc(1.5 * v-bind(offsetTop));
+    right: 15vw;
+  }
 
   display: flex;
   flex-direction: column;
@@ -45,6 +52,14 @@ export default defineComponent({
     width: 40px;
     height: 40px;
     object-fit: scale-down;
+  }
+
+  @include for-tablet-portrait-up {
+    img {
+      width: 75px;
+      height: 75px;
+      object-fit: scale-down;
+    }
   }
 }
 </style>
