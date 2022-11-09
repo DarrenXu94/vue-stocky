@@ -49,6 +49,9 @@ export default defineComponent({
 
     &.noSpacing {
       padding-left: 15px;
+      @include for-tablet-portrait-up {
+        padding-left: 40px;
+      }
     }
   }
 
