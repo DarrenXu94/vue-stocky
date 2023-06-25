@@ -2,14 +2,18 @@
   <div class="event-node">
     <div class="event-node-img-container">
       <div class="event-node-img-container-content">
-        <div v-for="pic of nodeData.pics" :key="pic" class="event-node-img-container-img">
-          <img :src="'/events/' + pic" :alt="nodeData.title">
+        <div
+          v-for="pic of nodeData.pics"
+          :key="pic"
+          class="event-node-img-container-img"
+        >
+          <img :src="'/events/' + pic" :alt="nodeData.title" />
         </div>
       </div>
     </div>
     <div class="event-node-padding" v-if="!nodeData.pics"></div>
 
-    <div class="event-node-text" :class="{               noSpacing: nodeData.pics               }">
+    <div class="event-node-text" :class="{ noSpacing: nodeData.pics }">
       <div class="event-node-text-content">
         <h3>{{ nodeData.title }}</h3>
       </div>
@@ -18,27 +22,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import { TimelineEvent } from '../../../models/timelineEvent.type';
+import { defineComponent, PropType } from "vue";
+import { TimelineEvent } from "../../../models/timelineEvent.type";
 
 export default defineComponent({
-  name: 'EventNode',
-  components: {
-  },
+  name: "EventNode",
+  components: {},
   props: {
     nodeData: {
       type: Object as PropType<TimelineEvent>,
       required: true,
-    }
+    },
   },
   data() {
-    return {
-    };
+    return {};
   },
 });
 </script>
 <style lang="scss">
-@import '../../../styles/mixins';
+@import "../../../styles/mixins";
 
 .event-node {
   display: flex;
@@ -50,7 +52,7 @@ export default defineComponent({
     &.noSpacing {
       padding-left: 15px;
       @include for-tablet-portrait-up {
-        padding-left: 40px;
+        padding-left: 45px;
       }
     }
   }
@@ -119,13 +121,12 @@ export default defineComponent({
       position: relative;
 
       &-content {
-        padding-left: calc(var(--timeline-spacing)/2.5);
+        padding-left: calc(var(--timeline-spacing) / 2.5);
       }
 
       &::before {
         @include timeline-dot;
         left: 5px;
-
       }
     }
 
