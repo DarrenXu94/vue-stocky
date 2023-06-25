@@ -1,38 +1,29 @@
 <template>
   <div class="character-list">
-    <!-- <div v-for="(char, idx) in characterStore.characters" :key="idx">
-      <Character v-if="char" :char="char" />
-
-    </div> -->
-    <!-- <div v-for="char of characters" :key="char.name"> -->
     <div class="character-container">
-
       <Character v-for="char of characters" :key="char.name" :char="char" />
     </div>
-    <!-- </div> -->
-
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { useCharacterStore } from '../../stores/character.store';
-import Character from './Character.vue';
-import { characters } from '../../consts/characters'
+import { defineComponent } from "vue";
+import { useCharacterStore } from "../../stores/character.store";
+import Character from "./Character.vue";
+import { characters } from "../../consts/characters";
 
 export default defineComponent({
-  name: 'CharacterList',
+  name: "CharacterList",
   components: {
-    Character
+    Character,
   },
   setup() {
-    const characterStore = useCharacterStore()
-
-    return { characterStore }
+    const characterStore = useCharacterStore();
+    return { characterStore };
   },
   data() {
     return {
-      characters
+      characters,
     };
   },
 });
@@ -49,6 +40,5 @@ export default defineComponent({
   .character-container {
     position: relative;
   }
-
 }
 </style>

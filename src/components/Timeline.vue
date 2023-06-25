@@ -2,7 +2,7 @@
   <div class="timeline">
     <h1>24 Stocky Timeline</h1>
   </div>
-  <div>
+  <div class="main-content">
     <Intro />
     <Node :node-data="node" v-for="(node, idx) of sortedList" :key="idx" />
   </div>
@@ -104,6 +104,10 @@ export default defineComponent({
 
     word-spacing: 100vw;
   }
+}
+
+.main-content {
+  margin-bottom: 500px;
 }
 
 .bg {

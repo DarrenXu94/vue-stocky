@@ -59,28 +59,31 @@ export const characters: TimelineCharacter[] = [
     room: 3,
   },
   {
+    name: "Brendo",
+    arrival: "22/05/2022",
+    departure: "17/01/2023",
+    img: "brendo.png",
+    room: 1,
+  },
+  {
     name: "Ash",
     arrival: "28/08/2019",
     img: "ash.png",
     room: 4,
+    departure: "09/07/2023",
   },
   {
     name: "Leeroy",
     arrival: "02/02/2022",
     room: 3,
     img: "liam.png",
+    departure: "09/07/2023",
   },
   {
     name: "Will",
     arrival: "06/08/2022",
     room: 2,
     img: "will.png",
-  },
-  {
-    name: "Brendo",
-    arrival: "22/05/2022",
-    departure: "17/01/2023",
-    img: "brendo.png",
-    room: 1,
+    departure: "09/07/2023",
   },
 ];
