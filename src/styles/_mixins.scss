@@ -45,3 +45,9 @@
   position: absolute;
   top: 20px;
 }
+
+@mixin bubble {
+  border: 3px solid black;
+  background-color: white;
+  border-radius: 10px;
+}

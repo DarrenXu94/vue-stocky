@@ -1,36 +1,34 @@
 <template>
   <div class="intro">
-    <h2>
-      Stocky
-    </h2>
-    <h4>
-      A sharehouse in time
-    </h4>
+    <h2>Stocky</h2>
+    <h4>A sharehouse in time</h4>
     <p>
-      Welcome to the interactive Stockdale timeline. Stockdale isn't just a household, it is a way of life. The house of
-      Stockdale comprises plenty of history which hath been documented below. Scroll down to see the timeline and
-      explore the various events and characters.
+      Welcome to the interactive Stockdale timeline. Stockdale isn't just a
+      household, it is a way of life. The house of Stockdale comprises plenty of
+      history which hath been documented below. Scroll down to see the timeline
+      and explore the various events and characters.
     </p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'Intro',
-  components: {
-  },
+  name: "Intro",
+  components: {},
   data() {
-    return {
-    };
+    return {};
   },
 });
 </script>
 <style lang="scss">
-@import '../styles/mixins';
+@import "../styles/mixins";
 
 .intro {
+  padding: 10px 20px;
+  @include bubble;
+
   @include for-phone-only {
     text-align: left;
     @include mobile-timeline-margin;

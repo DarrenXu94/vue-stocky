@@ -42,12 +42,19 @@ export default defineComponent({
 <style lang="scss">
 @import "../../../styles/mixins";
 
+.event-node-text-content {
+  @include bubble;
+  width: max-content;
+  padding: 0 10px;
+}
+
 .event-node {
   display: flex;
   align-items: center;
 
   &-text {
     padding-left: var(--timeline-spacing);
+    margin: 10px;
 
     &.noSpacing {
       padding-left: 15px;
@@ -120,9 +127,9 @@ export default defineComponent({
     &-text {
       position: relative;
 
-      &-content {
-        padding-left: calc(var(--timeline-spacing) / 2.5);
-      }
+      // &-content {
+      //   padding-left: calc(var(--timeline-spacing) / 2.5);
+      // }
 
       &::before {
         @include timeline-dot;

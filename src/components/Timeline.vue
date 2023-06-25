@@ -110,7 +110,7 @@ export default defineComponent({
   position: fixed;
   top: 0;
   width: 100vw;
-  background-image: url("bg.jpeg");
+  background-image: url("./bg.jpeg");
 
   /* Set a specific height */
   height: 100vh;

@@ -7,7 +7,6 @@
     <div class="character-node-padding"></div>
     <div class="character-node-text">
       <div class="character-node-text-content">
-
         <h3>{{ nodeData.name }}</h3>
         <p v-if="nodeData.status === 'leaving'">Farewell</p>
         <p v-else>Welcome</p>
@@ -17,10 +16,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import { CharacterNodeType } from '../../../models/timelineCharacter.type';
-import { useCharacterStore } from '../../../stores/character.store';
-import { gsap } from 'gsap';
+import { defineComponent, PropType } from "vue";
+import { CharacterNodeType } from "../../../models/timelineCharacter.type";
+import { useCharacterStore } from "../../../stores/character.store";
+import { gsap } from "gsap";
 
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -31,12 +30,12 @@ const isLocalHost =
   location.hostname === "";
 
 export default defineComponent({
-  name: 'CharacterNode',
+  name: "CharacterNode",
   mounted() {
-    if (this.nodeData.status == 'leaving') return
+    if (this.nodeData.status == "leaving") return;
 
-    const arrivalDiv = '#' + this.nodeData.name
-    const departureDiv = '#' + this.nodeData.name + '_leaving'
+    const arrivalDiv = "#" + this.nodeData.name;
+    const departureDiv = "#" + this.nodeData.name + "_leaving";
 
     let triggerOpts = {
       trigger: arrivalDiv,
@@ -58,62 +57,68 @@ export default defineComponent({
       scrollTrigger: triggerOpts,
     });
 
-    const renderId = '#' + this.nodeData.name + '_render'
+    const renderId = "#" + this.nodeData.name + "_render";
     const shrinkTween = gsap.fromTo(
       renderId,
       { xPercent: 0, opacity: 0 },
       {
-
         opacity: 1,
       }
     );
     projectShrinkTimeline.add(shrinkTween);
-
   },
   props: {
     nodeData: {
       type: Object as PropType<CharacterNodeType>,
       required: true,
-    }
+    },
   },
   setup() {
-    const characterStore = useCharacterStore()
-    return { characterStore }
+    const characterStore = useCharacterStore();
+    return { characterStore };
   },
   methods: {
     computedId(): string {
-      return `${this.nodeData.name}${this.nodeData.status == 'leaving' ? '_leaving' : ''}`
+      return `${this.nodeData.name}${
+        this.nodeData.status == "leaving" ? "_leaving" : ""
+      }`;
     },
     onIntersectionObserver([{ isIntersecting }]: any) {
-      if (isIntersecting && this.nodeData.status !== 'leaving') {
-        console.log(this.nodeData.name, 'is on screen')
-        this.characterStore.setCharacter(this.nodeData)
+      if (isIntersecting && this.nodeData.status !== "leaving") {
+        console.log(this.nodeData.name, "is on screen");
+        this.characterStore.setCharacter(this.nodeData);
       }
 
-      if (isIntersecting && this.nodeData.status == 'leaving') {
-        this.characterStore.removeCharacter(this.nodeData)
-
+      if (isIntersecting && this.nodeData.status == "leaving") {
+        this.characterStore.removeCharacter(this.nodeData);
       }
-    }
+    },
   },
   data() {
-    return {
-    };
+    return {};
   },
 });
 </script>
 <style lang="scss">
-@import '../../../styles/mixins';
+@import "../../../styles/mixins";
+
+.character-node-text {
+  margin: 5px;
+}
+
+.character-node-text-content {
+  @include bubble;
+  width: max-content;
+  padding: 0 10px;
+}
 
 @include for-phone-only {
-
   .character-node {
     display: flex;
     align-items: center;
 
     &-text {
       padding-left: var(--timeline-spacing);
-
     }
 
     &-padding {
@@ -154,7 +159,6 @@ export default defineComponent({
 }
 
 @include for-tablet-portrait-up {
-
   .character-node {
     width: 80%;
     margin: auto;
@@ -179,13 +183,12 @@ export default defineComponent({
       position: relative;
 
       &-content {
-        padding-left: var(--timeline-spacing);
+        margin-left: 20px;
       }
 
       &::before {
         @include timeline-dot;
         left: -20px;
-
       }
     }
   }

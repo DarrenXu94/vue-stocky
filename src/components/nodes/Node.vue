@@ -7,45 +7,46 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import { CharacterNodeType } from '../../models/timelineCharacter.type';
-import { TimelineEvent } from '../../models/timelineEvent.type';
-import { NodeTimelineYearType } from '../../models/timelineYear.type';
-import CharacterNode from './variants/CharacterNode.vue';
-import EventNode from './variants/EventNode.vue';
-import Year from './variants/Year.vue';
+import { defineComponent, PropType } from "vue";
+import { CharacterNodeType } from "../../models/timelineCharacter.type";
+import { TimelineEvent } from "../../models/timelineEvent.type";
+import { NodeTimelineYearType } from "../../models/timelineYear.type";
+import CharacterNode from "./variants/CharacterNode.vue";
+import EventNode from "./variants/EventNode.vue";
+import Year from "./variants/Year.vue";
 
 export default defineComponent({
-  name: 'Node',
+  name: "Node",
   props: {
     nodeData: {
-      type: Object as PropType<CharacterNodeType | TimelineEvent | NodeTimelineYearType>,
+      type: Object as PropType<
+        CharacterNodeType | TimelineEvent | NodeTimelineYearType
+      >,
       required: true,
-    }
+    },
   },
   components: {
     CharacterNode,
     EventNode,
-    Year
+    Year,
   },
 
   methods: {
     instanceOfCharacter(object: any): object is CharacterNodeType {
-      return 'name' in object;
+      return "name" in object;
     },
     instanceOfYear(object: any): object is NodeTimelineYearType {
-      return 'year' in object;
-    }
+      return "year" in object;
+    },
   },
   data() {
-    return {
-    };
+    return {};
   },
 });
 </script>
 
 <style lang="scss">
-@import '../../styles/mixins';
+@import "../../styles/mixins";
 
 .timeline-node {
   position: relative;
@@ -55,7 +56,6 @@ export default defineComponent({
     height: 300px;
     margin: 8px;
     border: 3px solid var(--primary-color);
-
 
     @include for-phone-only {
       height: 96px;
