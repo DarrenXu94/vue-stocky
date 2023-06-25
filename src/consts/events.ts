@@ -169,4 +169,12 @@ export const events: TimelineEvent[] = [
     date: "15/05/2022",
     pics: ["final_1.jpeg"],
   },
+  {
+    title: "Rockdale",
+    date: "01/07/2023",
+  },
+  {
+    title: "Eviction",
+    date: "09/07/2023",
+  },
 ];

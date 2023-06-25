@@ -19,4 +19,7 @@ export const years: TimelineYear[] = [
   {
     year: "2022",
   },
+  {
+    year: "2023",
+  },
 ];
